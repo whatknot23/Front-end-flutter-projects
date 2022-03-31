@@ -2,15 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:html' as html;
 
-class PhoneView extends StatelessWidget {
+class PhoneView extends StatefulWidget {
   const PhoneView({Key? key}) : super(key: key);
+
+  @override
+  State<PhoneView> createState() => _PhoneViewState();
+}
+
+class _PhoneViewState extends State<PhoneView> {
+  List<String> textList = [
+    "Loading",
+    "Who do you remember from school?",
+    "What are your favourite family vacation memories?",
+    "Did you have a best friend, and if so, how did that relationship play out over the course of your life?",
+    "How did you enjoy working?",
+    "What are some achievements you are most proud of?",
+    "What was your favourite childhood holiday tradition?",
+    "What do you remember about your parents?",
+    "What other family members helped raise you?",
+    "Do you still stay in touch with any of your co-workers>",
+    "What do you most remember about your school?",
+    "What was a memorable birthday?",
+    "Do you have any fond memories of your co-workers?",
+    "Did you recieve any special rewards?",
+    "Do you have memories of what your parents said you when you were like a baby?",
+    "What advice would you give young people who are looking for their first job?"
+  ];
+  int index = 0;
+  bool flag = false;
+  bool copyText = false;
   @override
   Widget build(BuildContext context) {
     double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
-    return SafeArea(
+
+    return SingleChildScrollView(
       child: Container(
-        color: const Color.fromARGB(255, 243, 243, 243),
+        height: _height,
+        width: _width,
+        color: Color.fromARGB(255, 247, 246, 246),
         child: Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,20 +75,114 @@ class PhoneView extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          Text(
-            "Grow Closer to your loved ones\nby asking them this question.",
+          Text("Grow Closer to your loved ones\nby asking them this question.",
+              style: GoogleFonts.openSans(
+                  color: Color.fromARGB(255, 20, 85, 100),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w300,
+                  fontStyle: FontStyle.normal)),
+          SizedBox(
+            height: 50,
+            width: 300,
+            child: flag == true
+                ? Container(
+                    alignment: Alignment.centerRight,
+                    padding:
+                        EdgeInsets.only(top: 16, bottom: 8, left: 6, right: 6),
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 79, 124, 135)),
+                        onPressed: () {
+                          setState(() {
+                            copyText = true;
+                          });
+                        },
+                        child: Text(
+                          copyText == false ? "Click To Copy" : "Copied",
+                          style: const TextStyle(color: Colors.white),
+                        )))
+                : null,
           ),
-          const SizedBox(
+          IntrinsicHeight(
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  flag = true;
+                  if (index == 0) {
+                    index++;
+                  }
+                });
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  border: flag == true
+                      ? Border.all(
+                          width: 4, color: Color.fromARGB(255, 53, 84, 91))
+                      : null,
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
+                width: _width / 1.08,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    textList[index],
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.lato(
+                      textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                          color: Color.fromARGB(255, 79, 124, 135)),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(15.0),
+              ),
+              primary: Color.fromARGB(255, 79, 124, 135),
+            ),
+            onPressed: () {},
+            icon: const Icon(Icons.copy_rounded),
+            label: Padding(
+              padding: const EdgeInsets.only(top: 12.0, bottom: 12, right: 12),
+              child: Text(
+                "Copy this question",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+          SizedBox(
             height: 20,
           ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(15.0),
+              ),
+              primary: Color.fromARGB(255, 179, 207, 214),
             ),
-            height: 180,
-            width: _width / 1.08,
-          )
+            onPressed: () {
+              setState(() {
+                index++;
+              });
+            },
+            icon: const Icon(Icons.copy_rounded),
+            label: Padding(
+              padding: const EdgeInsets.only(top: 12.0, bottom: 12, right: 12),
+              child: Text(
+                "Try another one",
+                style: TextStyle(color: Color.fromARGB(255, 247, 246, 246)),
+              ),
+            ),
+          ),
         ]),
       ),
     );
