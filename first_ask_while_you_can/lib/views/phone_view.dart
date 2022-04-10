@@ -40,7 +40,7 @@ class _PhoneViewState extends State<PhoneView> {
       child: Container(
         height: _height,
         width: _width,
-        color: Color.fromARGB(255, 238, 242, 243),
+        color: Color.fromARGB(255, 247, 246, 246),
         child: Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,12 +59,6 @@ class _PhoneViewState extends State<PhoneView> {
                     const EdgeInsets.symmetric(vertical: 14.0, horizontal: 10),
                 height: MediaQuery.of(context).size.height / 12,
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      side: BorderSide(
-                          width: 2,
-                          color: Color.fromARGB(255, 79, 124, 135),
-                          style: BorderStyle.solid),
-                      primary: Color.fromARGB(255, 238, 242, 243)),
                   onPressed: () {
                     const url = "https://www.timewell.io/";
                     html.window.open(url, "time well");
@@ -170,36 +164,25 @@ class _PhoneViewState extends State<PhoneView> {
           ),
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
-              side: BorderSide(
-                  width: 2,
-                  color: Color.fromARGB(255, 79, 124, 135),
-                  style: BorderStyle.solid),
               shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(15.0),
               ),
-              primary: Color.fromARGB(255, 238, 242, 243),
+              primary: Color.fromARGB(255, 179, 207, 214),
             ),
             onPressed: () {
               setState(() {
                 index++;
               });
             },
-            icon: const Icon(
-              Icons.transfer_within_a_station_sharp,
-              color: Color.fromARGB(255, 79, 124, 135),
-            ),
+            icon: const Icon(Icons.copy_rounded),
             label: Padding(
               padding: const EdgeInsets.only(top: 12.0, bottom: 12, right: 12),
               child: Text(
                 "Try another one",
-                style: TextStyle(color: Color.fromARGB(255, 79, 124, 135)),
+                style: TextStyle(color: Color.fromARGB(255, 247, 246, 246)),
               ),
             ),
           ),
-          IntrinsicHeight(
-              child: Text("Made with love by Nayeem :)",
-                  style: GoogleFonts.mukta(
-                      color: Color.fromARGB(255, 79, 124, 135)))),
         ]),
       ),
     );
