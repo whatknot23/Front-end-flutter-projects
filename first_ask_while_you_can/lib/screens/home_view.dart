@@ -10,7 +10,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       body: LayoutBuilder(builder: (_, constrains) {
         if (constrains.maxWidth <= 720) {
-          return PhoneView();
+          return const PhoneView();
         } else {
           return const WebView();
         }

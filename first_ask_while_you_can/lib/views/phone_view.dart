@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_new
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:html' as html;
@@ -40,7 +42,7 @@ class _PhoneViewState extends State<PhoneView> {
       child: Container(
         height: _height,
         width: _width,
-        color: Color.fromARGB(255, 238, 242, 243),
+        color: const Color.fromARGB(255, 238, 242, 243),
         child: Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,11 +62,11 @@ class _PhoneViewState extends State<PhoneView> {
                 height: MediaQuery.of(context).size.height / 12,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      side: BorderSide(
+                      side: const BorderSide(
                           width: 2,
                           color: Color.fromARGB(255, 79, 124, 135),
                           style: BorderStyle.solid),
-                      primary: Color.fromARGB(255, 238, 242, 243)),
+                      primary: const Color.fromARGB(255, 238, 242, 243)),
                   onPressed: () {
                     const url = "https://www.timewell.io/";
                     html.window.open(url, "time well");
@@ -83,7 +85,7 @@ class _PhoneViewState extends State<PhoneView> {
           ),
           Text("Grow Closer to your loved ones\nby asking them this question.",
               style: GoogleFonts.openSans(
-                  color: Color.fromARGB(255, 20, 85, 100),
+                  color: const Color.fromARGB(255, 20, 85, 100),
                   fontSize: 16,
                   fontWeight: FontWeight.w300,
                   fontStyle: FontStyle.normal)),
@@ -93,11 +95,11 @@ class _PhoneViewState extends State<PhoneView> {
             child: flag == true
                 ? Container(
                     alignment: Alignment.centerRight,
-                    padding:
-                        EdgeInsets.only(top: 16, bottom: 8, left: 6, right: 6),
+                    padding: const EdgeInsets.only(
+                        top: 16, bottom: 8, left: 6, right: 6),
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Color.fromARGB(255, 79, 124, 135)),
+                            primary: const Color.fromARGB(255, 79, 124, 135)),
                         onPressed: () {
                           setState(() {
                             copyText = true;
@@ -123,7 +125,8 @@ class _PhoneViewState extends State<PhoneView> {
                 decoration: BoxDecoration(
                   border: flag == true
                       ? Border.all(
-                          width: 4, color: Color.fromARGB(255, 53, 84, 91))
+                          width: 4,
+                          color: const Color.fromARGB(255, 53, 84, 91))
                       : null,
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.white,
@@ -135,7 +138,7 @@ class _PhoneViewState extends State<PhoneView> {
                     textList[index],
                     textAlign: TextAlign.center,
                     style: GoogleFonts.lato(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 30,
                           color: Color.fromARGB(255, 79, 124, 135)),
@@ -145,7 +148,7 @@ class _PhoneViewState extends State<PhoneView> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           ElevatedButton.icon(
@@ -153,31 +156,31 @@ class _PhoneViewState extends State<PhoneView> {
               shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(15.0),
               ),
-              primary: Color.fromARGB(255, 79, 124, 135),
+              primary: const Color.fromARGB(255, 79, 124, 135),
             ),
             onPressed: () {},
             icon: const Icon(Icons.copy_rounded),
-            label: Padding(
-              padding: const EdgeInsets.only(top: 12.0, bottom: 12, right: 12),
+            label: const Padding(
+              padding: EdgeInsets.only(top: 12.0, bottom: 12, right: 12),
               child: Text(
                 "Copy this question",
                 style: TextStyle(color: Colors.white),
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
-              side: BorderSide(
+              side: const BorderSide(
                   width: 2,
                   color: Color.fromARGB(255, 79, 124, 135),
                   style: BorderStyle.solid),
               shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(15.0),
               ),
-              primary: Color.fromARGB(255, 238, 242, 243),
+              primary: const Color.fromARGB(255, 238, 242, 243),
             ),
             onPressed: () {
               setState(() {
@@ -188,18 +191,18 @@ class _PhoneViewState extends State<PhoneView> {
               Icons.transfer_within_a_station_sharp,
               color: Color.fromARGB(255, 79, 124, 135),
             ),
-            label: Padding(
-              padding: const EdgeInsets.only(top: 12.0, bottom: 12, right: 12),
+            label: const Padding(
+              padding: EdgeInsets.only(top: 12.0, bottom: 12, right: 12),
               child: Text(
                 "Try another one",
                 style: TextStyle(color: Color.fromARGB(255, 79, 124, 135)),
               ),
             ),
           ),
-          IntrinsicHeight(
-              child: Text("Made with love by Nayeem :)",
-                  style: GoogleFonts.mukta(
-                      color: Color.fromARGB(255, 79, 124, 135)))),
+          SizedBox(height: 200),
+          Text("Made with love by Nayeem :)",
+              style: GoogleFonts.mukta(
+                  color: const Color.fromARGB(255, 79, 124, 135))),
         ]),
       ),
     );
